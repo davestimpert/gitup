@@ -21,12 +21,16 @@ for branch in `git for-each-ref --format='%(refname:short)' refs/heads`; do
 		if [ $LOCAL == $REMOTE ]; then
 		   echo -e "${GREEN}OK${NC}\t\t$branch" 
 		elif [ $LOCAL == $BASE ]; then
-			git branch -f $branch $REMOTE
-			echo -e "${GREEN}UPDATED${NC}\t$branch"
+			if [ $HEAD == $LOCAL ]; then
+				git merge $REMOTE&>/dev/null
+			else
+				git branch -f $branch $REMOTE
+			fi
+			echo -e "${GREEN}UPDATED${NC}\t\t$branch"
 		elif [ $REMOTE == $BASE ]; then
 			echo -e "${RED}AHEAD${NC}\t\t$branch"
 		else
-			echo -e "${RED}DIVERGED${NC}\t$branch"
+			echo -e "${RED}DIVERGED${NC}\t\t$branch"
 		fi
 	else
 		echo -e "${RED}NO REMOTE${NC}\t$branch"
