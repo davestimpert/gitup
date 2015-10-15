@@ -8,7 +8,8 @@ NC='\033[0m' # No Color
 HEAD=$(git rev-parse HEAD)
 CHANGED=$(git status --porcelain | wc -l)
 
-git fetch --all --prune
+echo "Fetching..."
+git fetch --all --prune &>/dev/null
 for branch in `git for-each-ref --format='%(refname:short)' refs/heads`; do
 
 	LOCAL=$(git rev-parse --quiet --verify $branch)
