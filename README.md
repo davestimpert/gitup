@@ -11,8 +11,5 @@ What it does
 
 Usage
 --------
-This is a bash script.  When you are in a directory which is a git repo (has a .git dir) then just run gitup.sh
-
-TODO
---------
-Make this work in a function
+This is a bash function.  When you are in a directory which is a git repo (has a .git dir) then just run gitup.sh
+Just add this to your bash profile so you can run "gitup" in any directory.
