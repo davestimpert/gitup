@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-gitups(){	
+gitup(){	
 	RED='\033[33;31m'
 	YELLO='\033[33;33m'
 	GREEN='\033[33;32m'
