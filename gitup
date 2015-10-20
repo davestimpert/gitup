@@ -21,10 +21,10 @@ gitup(){
 			REMOTE=$(git rev-parse --quiet --verify $branch@{u})
 			BASE=$(git merge-base $branch $branch@{u})
 			
-			if [ "$branch" = "$CUR_BRANCH" ]; then
+			if [ "$LOCAL" = "$REMOTE" ]; then
 			   echo -e "${GREEN}OK${NC}\t\t$branch" 
 			elif [ "$LOCAL" = "$BASE" ]; then
-				if [ "$HEAD" = "$LOCAL" ]; then
+				if [ "$branch" = "$CUR_BRANCH" ]; then
 					git merge $REMOTE&>/dev/null
 				else
 					git branch -f $branch $REMOTE
