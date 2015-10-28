@@ -6,6 +6,11 @@ gitup(){
 	GREEN='\033[33;32m'
 	NC='\033[0m' # No Color
 
+	if ! [ -d .git ]; then
+		echo "${RED}This is not a git repo"
+		return 1
+	fi
+	
 	HEAD=$(git rev-parse HEAD)
 	CHANGED=$(git status --porcelain | wc -l)
 	CUR_BRANCH=$(git rev-parse --abbrev-ref HEAD)
